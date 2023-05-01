@@ -5,14 +5,14 @@ export default function Calculator() {
   const [calculationText, setCalculationText] = useState('');
   const [resultText, setResultText] = useState('');
 
-  const onButtonPress = text => {
+  const onButtonPress = (text: String) => {
     if (text === '=') {
       return calculate();
     }
     setCalculationText(calculationText + text);
   };
 
-  const onOperatorClick = operator => {
+  const onOperatorClick = (operator: string) => {
     const lastChar = calculationText.slice(-1);
 
     if (
@@ -34,7 +34,12 @@ export default function Calculator() {
     let operator = '+' || '*';
     for (let i = 0; i < uzunluq.length; i++) {
       const xarakter = uzunluq.charAt(i);
-      if (xarakter === '+' || xarakter === '-' || xarakter === '*' || xarakter === '/') {
+      if (
+        xarakter === '+' ||
+        xarakter === '-' ||
+        xarakter === '*' ||
+        xarakter === '/'
+      ) {
         operator = xarakter;
       } else {
         const number = parseFloat(uzunluq.slice(i));
@@ -54,7 +59,7 @@ export default function Calculator() {
     }
     setResultText(result.toString());
   };
-  
+
   const onClearClick = () => {
     setCalculationText('');
     setResultText('');
